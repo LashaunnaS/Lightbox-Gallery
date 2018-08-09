@@ -5,32 +5,27 @@ import PhotoGrid from './components/photoGrid/PhotoGrid';
 
 class App extends Component {
   state = {
-    pic: {}
+    imgs: [],
   }
+
+  componentDidMount() {
+    fetch('https://api.unsplash.com/photos/?client_id=669951a19eac02bd0629eaabbe929c467e854b4a8a3b06e7ab3b720cc28c6d25')
+      .then(response => response.json())
+      .then(responseData => {
+        let images = responseData.map(x => x.urls.regular)
+          this.setState({imgs: images})
+        })
+    }
 
   render() {
     return (
       <div>
         <Header />
-        <PhotoGrid pic={this.state.pic} />
+        <PhotoGrid imgs={this.state.imgs} />
       </div>
     );
   }
 }
 
-const numItemsToGenerate = 8; //how many gallery items you want on the screen
-const imageWidth = 480; //your desired image width in pixels
-const imageHeight = 480; //desired image height in pixels
-const collectionID = 158642; //the collection ID from the original url
-
-function renderGalleryItem(){
-  fetch(`https://source.unsplash.com/collection/${collectionID}/${imageWidth}x${imageHeight}/`).then((response)=> {    
-   this.setState({pic: response.url})
-  }) 
-  for(let i=0;i<numItemsToGenerate;i++){
-    renderGalleryItem();
-  }
-
-}
 
 export default App;

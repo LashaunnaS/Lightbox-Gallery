@@ -8,3 +8,7 @@ export const PhotoGridWrapper = styles.section`
     grid-gap: 15px 10px;
 `;
 
+export const ImageWrapper = styles.div`
+    
+`
+
