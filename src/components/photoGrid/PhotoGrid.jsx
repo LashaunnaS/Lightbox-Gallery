@@ -1,23 +1,16 @@
 import React from 'react';
-import { PhotoGridWrapper, ImageWrapper } from './PhotoGridStyles';
+import { PhotoGridWrapper, Photo } from './PhotoGridStyles';
 
-const PhotoGrid = ({imgs}) => {
-    return (
-      <PhotoGridWrapper>
+const PhotoGrid = ({ imgs }) => {
+  return (
+    <PhotoGridWrapper>
       {
-        imgs.map(i => {
-          return(
-            Object.keys(i).map(key => {
-            return(
-                <ImageWrapper key={key}>
-                  <img src={imgs[key]} alt='' />
-                </ImageWrapper>
-            )
-          }))
-      } )}
-      </PhotoGridWrapper>
-    )
-}
+        imgs.map((i, index) => {
+          return <Photo key={index} src={i} />
+        })
+      }
+    </PhotoGridWrapper>
+  )
 
-  export default PhotoGrid;
-  
+}
+export default PhotoGrid;

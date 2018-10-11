@@ -1,14 +1,15 @@
 import styles from 'styled-components';
 
 // Grid
-export const PhotoGridWrapper = styles.section`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    grid-template-rows: repeat(2, 35vh);
-    grid-gap: 15px 10px;
+export const PhotoGridWrapper = styles.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 `;
 
-export const ImageWrapper = styles.div`
-    
-`
-
+export const Photo = styles.img`
+    object-fit: cover;
+    width: 20em;
+    height: 25em;
+    padding: 2em;
+`;

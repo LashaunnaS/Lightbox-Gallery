@@ -1,4 +1,4 @@
-import styles from 'styled-components'; 
+import styles from 'styled-components';
 
 // Header
 export const HeaderWrapper = styles.div`
@@ -12,4 +12,5 @@ export const HeadTitle = styles.h1`
     grid-row: 1/2;
     align-self: center;
     justify-self: center;
+    font-family: "Roboto";
 `;
