@@ -1,35 +1,42 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { PhotoGridWrapper, Photo } from './PhotoGridStyles';
+import LightboxSlider from './LightboxSlider';
 
-const PhotoGrid = ({ imgs }) => {
+class PhotoGrid extends React.Component {
 
-
-  const scaleUp = (e) => {
+  scaleUp = (e) => {
     let x = e.target;
     x.style.transform = "scale(1.2)";
     x.style.transition = "1s";
   }
 
-  const scaleDown = (e) => {
+  scaleDown = (e) => {
     let x = e.target;
     x.style.transform = "scale(1)";
     x.style.transition = "1s";
   }
 
-  return (
-    <PhotoGridWrapper>
-      {
-        imgs.map((i, index) => {
-          return (
-            <div key={index}>
-              <Photo src={i} className={`img${index}`} onMouseOver={scaleUp} onMouseOut={scaleDown} />
-            </div>
-          )
-        })
-      }
+  render() {
+    const { imgs } = this.props;
 
-    </PhotoGridWrapper>
-  )
-
+    return (
+      <Fragment>
+        <PhotoGridWrapper>
+          {
+            imgs.map((img, index) => {
+              return (
+                <div key={index}>
+                  <Photo src={img} className={`img${index}`} onMouseOver={this.scaleUp} onMouseOut={this.scaleDown} />
+                  <LightboxSlider imgs={this.props.imgs} index={index} />
+                </div>
+              )
+            })
+          }
+        </PhotoGridWrapper>
+      </Fragment>
+    )
+  }
 }
+
 export default PhotoGrid;
+
